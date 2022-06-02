@@ -1,0 +1,48 @@
+{% extends "app_final/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Resultado Busqueda</h1>
+                <a class="btn btn-primary" href="{% url 'Ver Reviews' %}">Ver todas las reseñas</a>
+                <a class="btn btn-primary" href="{% url 'Filtrar Reviews' %}">Filtrar por juego</a>
+                <a class="btn btn-primary" href="{% url 'Filtrar Usuarios' %}">Filtrar por autor</a>
+            </div>
+        </div>
+    </div>
+</header>
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+            {% if nombre_juego %}
+                {% for juego in juegos %} 
+                    {% if nombre_juego == juego.nombre_juego %}
+                        <h2>Titulo de Juego: {{juego.nombre_juego}}</h2> 
+                        <p>Genero: {{juego.genero_juego}}</p>
+                        <p>Desarrollador: {{juego.desarrollador}}</p>
+                        <p>----------------------------</p>
+                        {% for review in reviews %}
+                                {% if review.juego_review == juego.nombre_juego %}
+                                    <p>Autor de la Review: {{review.nombre_autor}}</p>
+                                    <h5>{{review.titulo_review}}</h5>
+                                    <p>{{review.contenido_review}}</p>
+                                    <p>Puntaje final: {{review.puntaje_review}}</p>
+                                    <p>----------------------------</p>
+                                {% endif %} 
+                        {% endfor %}
+                    {% endif %}
+                {% endfor %} 
+            {% endif %}
+        </div>
+    </div>
+</div>
+
+{% endblock %}

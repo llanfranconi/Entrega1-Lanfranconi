@@ -1,0 +1,39 @@
+{% extends "app_final/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Filtrar por juego</h1>
+                <a class="btn btn-primary" href="{% url 'Ver Reviews' %}">Ver todas las reseñas</a>
+                <a class="btn btn-primary" href="{% url 'Filtrar Usuarios' %}">Filtrar por autor</a>
+            </div>
+        </div>
+    </div>
+</header>
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+            {% if formulario_busqueda.errors %} 
+            <p>Por favor, verifique los datos ingresados</p>
+
+            {% endif %} 
+
+            <form action="ver_por_juego_resultado" method="GET">
+
+                <table>
+                    {{formulario_busqueda.as_table}}
+                </table>
+
+                <input type="submit", value="Enviar">
+
+            </div>
+        </div>
+    </div>
+{% endblock %}

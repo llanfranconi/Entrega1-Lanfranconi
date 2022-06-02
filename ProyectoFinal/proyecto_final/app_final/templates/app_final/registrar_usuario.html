@@ -1,0 +1,40 @@
+{% extends "app_final/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Registra tu usuario</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+            {% if formulario_registro_usuario.errors %} 
+            <p>Por favor, verifique los datos ingresados</p>
+
+            {% endif %} 
+
+            <form action="registrar_usuario" method="POST">
+                {% csrf_token %} 
+
+                <table>
+                    {{formulario_registro_usuario.as_table}}
+                </table>
+
+                <input type="submit", value="Enviar">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}

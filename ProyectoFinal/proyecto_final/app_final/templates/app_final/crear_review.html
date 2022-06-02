@@ -1,0 +1,42 @@
+{% extends "app_final/padre.html" %} 
+
+
+{% load static %} 
+
+{% block contenido_pagina %}
+
+<header class="masthead">
+    <div class="container position-relative">
+        <div class="row justify-content-center">
+            <div class="text-center text-white background-black">
+                <!-- Page heading-->
+                <h1>Crea tu reseña para este juego</h1>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="container position-relative">
+    <div class="row justify-content-center">
+        <div class="text-center text-black"></div>
+
+            <p>Si usted posee un usuario, ponga ese nombre de usuario, si no, ingrese "anonimo"</p>
+            {% if formulario_review.errors %} 
+            <p>Por favor, verifique los datos ingresados</p>
+
+            {% endif %} 
+
+            <form action="crear_review" method="POST">
+                {% csrf_token %} 
+
+                <table>
+                    {{formulario_review.as_table}}
+                </table>
+
+                <input type="submit", value="Enviar">
+            </form>
+        </div>
+    </div>
+</div>
+{% endblock %}
