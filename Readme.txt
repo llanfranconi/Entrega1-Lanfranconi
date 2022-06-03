@@ -1,5 +1,5 @@
 Todas las páginas del sitio se encontraran dentro de app_final.
-La página de inicio sera ....../app_final/
+
 Este es un sitio de reseñas de juegos.
 
 Las reseñas no se podrán agregar si no hay un juego con nombre igual en la base de datos. 
